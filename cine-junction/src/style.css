@@ -1,0 +1,444 @@
+body {
+  font-family: sans-serif;
+  background-color: #000000;
+  background-image: url(/images/backImage.jpg);
+  background-size: cover;
+}
+
+.app {
+  padding: 10rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+/* Animation effect for website name (header) */
+@keyframes headersAppearance {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Website name (h1) */
+h1 {
+  font-size: 4rem;
+  background: linear-gradient(180deg, rgb(0, 0, 0) 10%, rgba(249, 211, 180, 0) 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  width: fit-content;
+  background-color: #f0f0f0;
+  animation: headersAppearance 1.5s ease-in-out;
+}
+
+/* Searchbar outer box */
+.searchBar {
+  width: 80%;
+  margin: 2rem 0 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  background: #000000;
+  box-shadow: 1px 1px 20px 2px #f0f0f0;
+}
+
+/* SearchBar placeholder */
+.searchBar input {
+  flex: 3;
+  border: none;
+  font-size: 1.5rem;
+  font-family: monospace;
+  font-weight: 500;
+  padding-right: 1rem;
+  outline: none;
+  color: #a1a1a1;
+  background: transparent;
+}
+
+/* Search icon */
+.searchBar img {
+  width: 35px;
+  height: 35px;
+  cursor: grab;
+}
+
+/* No results found / No movies to display */
+.no-results-found {
+  width: 100%;
+  margin-top: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* No results found / No movies to display (the message) */
+.no-results-found h2 {
+  font-size: 1.25rem;
+  color: #a1a1a1;
+}
+
+/* The main container of all movie cards */
+.container {
+  width: 100%;
+  margin-top: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* Each individual movie card */
+.movie {
+  width: 310px;
+  height: 460px;
+  margin: 1.5rem;
+  position: relative;
+  border-radius: 30px;
+  overflow: hidden;
+  transition: all 0.4s;
+  box-shadow: 0px 13px 10px -7px #f0f0f0;
+}
+
+/* Date text */
+.movie div:nth-of-type(1) {
+  font-family: monospace;
+  position: absolute;
+  padding: 16px;
+  width: 100%;
+  opacity: 0;
+  top: 0;
+  color: #f0f0f0;
+}
+
+/* Individual movie cards */
+.movie:hover {
+  box-shadow: 0px 5px 30px -5px white;
+  transform: scale(1.05, 1.05);
+}
+
+/* Each movie's poster */
+.movie div:nth-of-type(2) img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover; 
+}
+
+/* Movie type & title container */
+.movie div:nth-of-type(3) {
+  z-index: 2;
+  background-color: rgb(0, 0, 0);
+  opacity: 1.0;
+  padding: 16px 24px 24px 24px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+
+/* Type heading - series/movie */
+.movie div:nth-of-type(3) span {
+  font-family: monospace;
+  text-transform: uppercase;
+  font-size: 13px;
+  letter-spacing: 2px;
+  font-weight: 500;
+  color: #f0f0f0;
+}
+
+/* Font  */
+.movie div:nth-of-type(3) h3 {
+  margin-top: 5px;
+  font-family: monospace;
+  color: #f0f0f0;
+}
+
+/* Movie image */
+.movie:hover div:nth-of-type(2) {
+  height: 100%;
+  opacity: 0.3;
+}
+
+/* Movie titles */
+.movie:hover div:nth-of-type(3) {
+  background-color: transparent;
+}
+
+/* Movie year */
+.movie:hover div:nth-of-type(1) {
+  opacity: 1;
+  font-weight: bolder;
+  font-family: monospace;
+}
+
+/* Movie details header */
+.movie-details .details-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+/* Movie details overlay */
+.movie-details-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Close icon styling */
+.close-icon {
+  background: none;
+  border: none;
+  font-size: 35px;
+  cursor: pointer;
+  color: #FF0000;
+}
+
+.movie-details img {
+  border: 1px solid #a1a1a1;
+  width: 100%; 
+  height: auto;
+}
+
+.movie-details {
+  color: #a1a1a1;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -40%);
+  background: rgb(0, 0, 0);
+  padding: 20px;
+  box-shadow: 1px 1px 15px 5px #f0f0f0;
+  z-index: 1000;
+  width: 50%; 
+}
+
+.movie-details img {
+  border: 1px solid #a1a1a1;
+  width: 100%; 
+  height: auto;
+}
+
+.details-content {
+  display: flex; 
+}
+
+.content {
+  flex: 1; 
+}
+
+.details-content span{
+  color:#f0f0f0;
+}
+
+.movie-details h2{
+  color:red;
+}
+
+/* Mobile Responsive */
+@media only screen and (max-width: 576px)  {
+
+  .details-content {
+    flex-direction: column; 
+  }
+
+  .app {
+    padding: 4rem 1rem;
+  }
+ 
+  h1 {
+    font-size: 2rem;
+  }
+ 
+  .container {
+    margin-top: 2rem;
+  }
+  
+  .movie {
+    width: 100%;
+  }
+
+  .searchBar img {
+    width: 30px;
+    height: 30px;
+    cursor: grab;
+  }
+  
+  .searchBar input {
+    flex: 3;
+    border: none;
+    font-size: 1rem;
+    font-family: monospace;
+    font-weight: 500;
+    padding-right: 1rem;
+    outline: none;
+    color: #a1a1a1;
+    background: transparent;
+  }
+
+  .details-content h3{
+    font-size: 12px;
+    line-height:1rem;
+  }
+
+  .movie-details h2{
+    font-size: 15px;
+    color:red;
+  }
+
+  .movie-details{
+    width: 80%;
+    height: auto;
+    box-shadow: 1px 1px 15px #f0f0f0;
+  }
+
+  .details-content img{
+    width: 70%;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto; 
+  }
+
+  .close-icon {
+    font-size: 22px;
+  }
+
+}
+
+/* Larger screens - Laptop Responsive */
+@media (min-width: 1200px) {
+
+  .details-content {
+    display: grid; 
+    grid-template-columns: 2fr 1fr; 
+    column-gap: 10px; 
+  }
+
+  .details-content h3{
+
+    font-size: 22px;
+    line-height: 3rem;
+  }
+
+  .movie-details h2{
+    font-size: 30px;
+    color:red;
+  }
+
+  .movie-details {
+    transform: translate(-50%, -20%);
+  }
+  
+}
+
+/* Medium devices (tablets) - Ipad Air & Ipad Mini */
+@media only screen and (min-width: 768px) and (max-width: 992px) {
+  
+  .details-content {
+    display: grid; 
+    grid-template-columns: 3fr 2fr; 
+    column-gap: 10px; 
+  }
+
+  .app {
+    padding: 4rem 1rem;
+  }
+ 
+  h1 {
+    font-size: 2rem;
+  }
+
+  .container {
+    margin-top: 2rem;
+  }
+  
+  .movie {
+    width: 35%;
+  }
+ 
+  .searchBar img {
+    width: 30px;
+    height: 30px;
+    cursor: grab;
+  }
+  
+  .searchBar input {
+    flex: 3;
+    border: none;
+    font-size: 1rem;
+    font-family: monospace;
+    font-weight: 500;
+    padding-right: 1rem;
+    outline: none;
+    color: #a1a1a1;
+    background: transparent;
+  }
+
+  .details-content h3{
+    font-size: 15px;
+    line-height:2rem;
+  }
+
+  .movie-details h2{
+    font-size: 25px;
+    color:red;
+  }
+
+  .movie-details{
+    width: 80%;
+    height: auto;
+  }
+
+  .details-content img{
+    width:100%;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto; 
+  }
+
+  .close-icon {
+    font-size: 25px;
+  }
+  
+}
+
+/* Larger tablets - Ipad Pro */
+@media only screen and (min-width: 992px) and (max-width: 1200px) {
+ 
+  .details-content {
+    display: grid; 
+    grid-template-columns: 2fr 2fr;
+    column-gap: 10px;
+  }
+
+  .details-content h3{
+    font-size: 16px;
+    line-height: 1.7rem;
+  }
+
+  .details-header h2{
+    font-size: 20px;
+    color:red;
+  }
+
+  .close-icon {
+    font-size: 25px;
+  }
+
+}
